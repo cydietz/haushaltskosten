@@ -1,0 +1,37 @@
+version: "3.9"
+
+volumes:
+  dbdata:
+
+services:
+
+  php: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/html/
+      - ./user.ini:/usr/local/etc/php/conf.d/xdebuguser.ini
+    depends_on:
+      - "db"
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: hako
+      MYSQL_PASSWORD: hakopass
+    volumes:
+      - dbdata:/var/lib/mysql/
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
