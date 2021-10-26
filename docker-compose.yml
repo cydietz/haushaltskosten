@@ -12,7 +12,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./src:/var/www/html/
+      - ./:/var/www/html/
       - ./user.ini:/usr/local/etc/php/conf.d/xdebuguser.ini
     depends_on:
       - "db"
