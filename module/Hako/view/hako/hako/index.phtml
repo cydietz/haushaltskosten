@@ -1,0 +1,30 @@
+<?php
+// module/Hako/view/hako/hako/index.phtml:
+
+$title = 'My spendings';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('hako', ['action' => 'add']) ?>">Add new spending</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Store</th>
+    <th>Price</th>
+    <th>Date</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($spendings as $spending) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($spending->store) ?></td>
+        <td><?= $this->escapeHtml($spending->price) ?></td>
+        <td><?= $this->escapeHtml($spending->date) ?></td>
+        <td>
+            <a href="<?= $this->url('hako', ['action' => 'edit', 'id' => $spending->id]) ?>">Edit</a>
+            <a href="<?= $this->url('hako', ['action' => 'delete', 'id' => $spending->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

@@ -13,5 +13,10 @@
  */
 
 return [
-    // ...
+    'db' => [
+        'driver' => 'Pdo',
+        'dsn'    => 'mysql:host=db;port=3306;dbname=haushaltskosten',
+        'user' => 'root',
+        'password' => 'root',
+    ],
 ];
