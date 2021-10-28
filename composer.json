@@ -20,7 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "module/Application/src/"
+            "Application\\": "module/Application/src/",
+            "Hako\\": "module/Hako/src/"
         }
     },
     "autoload-dev": {
