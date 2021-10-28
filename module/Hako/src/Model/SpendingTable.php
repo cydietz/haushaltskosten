@@ -23,7 +23,7 @@ class SpendingTable
     {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(['id' => $id]);
-        $row = $rowset->current;
+        $row = $rowset->current();
         if (! $row) {
             throw new RuntimeException(sprintf(
                 'Could not find row with identifier %d',
@@ -34,15 +34,15 @@ class SpendingTable
         return $row;
     }
 
-    public function saveSpending(Spending $Spending)
+    public function saveSpending(Spending $spending)
     {
         $data = [
-            'store' => $Spending->store,
-            'price'  => $Spending->price,
-            'date'  => $Spending->date,
+            'store' => $spending->store,
+            'price'  => $spending->price,
+            'date'  => $spending->date,
         ];
 
-        $id = (int) $Spending->id;
+        $id = (int) $spending->id;
 
         if ($id === 0) {
             $this->tableGateway->insert($data);
