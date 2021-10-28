@@ -19,7 +19,7 @@ $this->headTitle($title);
 <?php foreach ($spendings as $spending) : ?>
     <tr>
         <td><?= $this->escapeHtml($spending->store) ?></td>
-        <td><?= $this->escapeHtml($spending->price) ?></td>
+        <td><?= $this->escapeHtml($spending->price) ?> €</td>
         <td><?= $this->escapeHtml($spending->date) ?></td>
         <td>
             <a href="<?= $this->url('hako', ['action' => 'edit', 'id' => $spending->id]) ?>">Edit</a>
